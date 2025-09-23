@@ -17,7 +17,7 @@
 
         </header>
 
-        <h1>Formulaire de rendez-vous</h1>
+        <h1>✢ Formulaire de rendez-vous ✢</h1>
 
         <p>Tous champs avec le symbole * est obligatoire à remplire</p>
 
@@ -41,11 +41,13 @@
 
         </div>
 
+        <!--Form about a tatoo with all the informations for the tatoo artist-->
         <form method="POST" id="form-contact">
 
             <section class="personnalInformations">
 
-                <h2>Informations personnelles</h2>
+                <!--Personnal informations about the custummer-->
+                <h2>✢ I N F O R M A T I O N S P E R S O N N E L L E S ✢</h2>
 
                 <label for="name">Nom *</label>
                 <input type="text" name="name" id="name" required/>
@@ -67,6 +69,56 @@
 
                 <label label="instagram">Instagram</label>
                 <input type="text" name="insta" id="instagram" value="@"/>
+
+            </section>
+
+            <section>
+
+                <!--Details about the custummer's project-->
+                <h2>✢ P R O J E T ✢</h2>
+
+                <fieldset id="firstTatoo">
+                    <legend>Est ce ton premier tatoo ?</legend>
+
+                    <div>
+                        <input type="radio" name="firstTatoo" id="firstTatooYes" value="oui"/>
+                        <label for="firstTatooYes">Oui</label>
+                    </div>
+                        
+                    <div>
+                        <input type="radio" name="firstTatoo" id="firstTatooNo" value="non"/>
+                        <label for="firstTatooYes">Non</label>
+                    </div>
+                </fieldset>
+
+                <label for="projectDescription">Descriptif de ton projet * (le plus détaillé possible)</label>
+                <textarea id="projectDescription" name="projectDescription" rows="10" cols="53" maxlength="3000" required></textarea>
+
+                <label for="bodyLocation">Sur quelle partie du corps ? *</label>
+                <select id="bodyLocation" name="bodyLocation" required>
+                    <option value="">-- Choisis une option --</option>
+                    <option value="mains">Mains</option>
+                    <option value="avant bras">Avant bras</option>
+                    <option value="haut du bras">Haut du bras</option>
+                    <option value="epaule">Épaule</option>
+                    <option value="torse/poitrine">Torse/poitrine</option>
+                    <option value="cuisse">Ventre</option>
+                    <option value="cuisse">Cuisse</option>
+                    <option value="mollet">Mollet</option>
+                    <option value="pied">Pied</option>
+                    <option value="dos">Dos</option>
+                    <option value="fessier">Fessier</option>
+                    <option value="oreille">Oreille</option>
+                    <option value="autre">Autre</option>
+                </select>
+
+                <label for="heightTatoo">Taille approximative * (en cm)</label>
+                <input type="number" name="heightTatoo" id="heightTatoo" maxlength="100" required/>
+
+                <label for="tatooImage">
+                    Tu peux joindre des inspirations (croquis/photos/tattoo que j'ai pu réaliser..) pour que je cible au mieux le projet
+                </label>
+                <input type="file" name="tatooImage" id="tatooImage" accept="image/*" multiple/>
 
             </section>
 
