@@ -14,6 +14,7 @@ export function popupMain(){
 
 }
 
+//On load of the form page show the popup with message
 function showPopUp(){
 
     document.addEventListener("DOMContentLoaded", (event) =>{
@@ -27,6 +28,7 @@ function showPopUp(){
 
 }
 
+//Close popup after click on close button
 function closePopUp(){
 
     let popUp = document.getElementById("onload-popup")
@@ -36,6 +38,7 @@ function closePopUp(){
 
 }
 
+//close popup after click utside the popup div
 function closePopUpForClickOutsidePopUp(){
 
     let popUp = document.getElementById("onload-popup")

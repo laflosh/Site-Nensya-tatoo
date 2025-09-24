@@ -7,6 +7,7 @@
         <title>Formulaire de contact</title>
         <link rel="stylesheet" href="./style/main.css">
         <link rel="stylesheet" href="./style/form.css">
+        <script type="module" src="script/main.js"></script>
 
     </head>
 
@@ -25,7 +26,7 @@
         <!--div for on loading page popup-->
         <div id="onload-popup" aria-hidden="true" style="display: none">
 
-            <button>X</button>
+            <button id="close-popup">X</button>
 
             <p>
                 🌼 Ce formulaire ne <strong>t'engage pas</strong> à prendre rendez-vous mais à prendre toutes 
@@ -54,7 +55,7 @@
                 <input type="text" name="name" id="name" required/>
 
                 <label for="firstname">Prénom *</label>
-                <input type="text" name="firstname" id="firstname" required/>
+                <input type="text" name="firstName" id="firstName" required/>
 
                 <label for="birthDate">Date de naissance *</label>
                 <input type="date" name="birthDate" id="birthDate" min="1900-01-01" max="2100-01-01" required/>
@@ -173,7 +174,7 @@
                 </fieldset>
 
                 <label for="whatTreatments">Si "oui" à la question précédente, préciser lequel</label>
-                <input type="text" name="whatTreatments" id="whatTreatments" required/>
+                <input type="text" name="whatTreatments" id="whatTreatments"/>
 
                 <label for="allergies">Allergies connue ?</label>
                 <input type="text" name="allergies" id="allergies"/>
@@ -193,10 +194,10 @@
                 </fieldset>
 
                 <label for="whatSkinDiseases">Si "oui" à la question précédente, préciser lequel</label>
-                <input type="text" name="whatSkinDiseases" id="whatSkinDiseases" required/>
+                <input type="text" name="whatSkinDiseases" id="whatSkinDiseases"/>
 
-                <label for="chronicDideases">Maladies chroniques ou conditions particulières à signaler ?</label>
-                <input type="text" name="chronicDideases" id="chronicDideases" required/>
+                <label for="chronicDiseases">Maladies chroniques ou conditions particulières à signaler ?</label>
+                <input type="text" name="chronicDiseases" id="chronicDiseases" required/>
 
                 
                 <fieldset id="tatooComplication">
@@ -214,7 +215,7 @@
                 </fieldset>
 
                 <label for="whatTatooComplication">Si "oui" à la question précédente, préciser lequel</label>
-                <input type="text" name="whatTatooComplication" id="whatTatooComplication" required/>
+                <input type="text" name="whatTatooComplication" id="whatTatooComplication"/>
 
             </section>
 
@@ -227,8 +228,6 @@
             Developped by Florent Lecointre
 
         </footer>
-
-        <script src="script/main.js"></script>
 
     </body>
 
