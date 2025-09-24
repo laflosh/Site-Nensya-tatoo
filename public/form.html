@@ -5,6 +5,7 @@
 
         <meta charset="UTF-8">
         <title>Formulaire de contact</title>
+        <link rel="stylesheet" href="./style/main.css">
         <link rel="stylesheet" href="./style/form.css">
 
     </head>
@@ -124,6 +125,7 @@
 
             <section>
 
+                <!--Section for customer's disponibilities-->
                 <h2>✢ D I S P O N I B I L I T É S ✢</h2>
 
                 <p>
@@ -135,6 +137,88 @@
                 <textarea id="disponibilities" name="disponibilities" rows="10" cols="53" maxlength="3000" required></textarea>
 
             </section>
+
+            <section>
+
+                <!--Section for describe health condition of the custumer-->
+                <h2>✢ S A N T É / C O N T R E - I N D I C A T I O N S ✢</h2>
+
+                
+                <fieldset id="pregnant">
+                    <legend>Es-tu enceinte ou allaitante ? *</legend>
+
+                    <div>
+                        <input type="radio" name="pregnant" id="pregnantYes" value="oui" required/>
+                        <label for="pregnantYes">Oui</label>
+                    </div>
+                        
+                    <div>
+                        <input type="radio" name="pregnant" id="pregnantNo" value="non"/>
+                        <label for="pregnantNo">Non</label>
+                    </div>
+                </fieldset>
+
+                <fieldset id="treatments">
+                    <legend>Prends-tu des anticoagulants ou traitements médicaux particuliers ? *</legend>
+
+                    <div>
+                        <input type="radio" name="treatments" id="treatmentsYes" value="oui" required/>
+                        <label for="treatmentsYes">Oui</label>
+                    </div>
+                        
+                    <div>
+                        <input type="radio" name="treatments" id="treatmentsNo" value="non"/>
+                        <label for="treatmentsNo">Non</label>
+                    </div>
+                </fieldset>
+
+                <label for="whatTreatments">Si "oui" à la question précédente, préciser lequel</label>
+                <input type="text" name="whatTreatments" id="whatTreatments" required/>
+
+                <label for="allergies">Allergies connue ?</label>
+                <input type="text" name="allergies" id="allergies"/>
+
+                <fieldset id="skinDiseases">
+                    <legend>Problèmes de peau (eczéma, psoriasis, cicatrisation difficile..) ? *</legend>
+
+                    <div>
+                        <input type="radio" name="skinDiseases" id="skinDiseasesYes" value="oui" required/>
+                        <label for="skinDiseasesYes">Oui</label>
+                    </div>
+                        
+                    <div>
+                        <input type="radio" name="skinDiseases" id="skinDiseasesNo" value="non"/>
+                        <label for="skinDiseasesNo">Non</label>
+                    </div>
+                </fieldset>
+
+                <label for="whatSkinDiseases">Si "oui" à la question précédente, préciser lequel</label>
+                <input type="text" name="whatSkinDiseases" id="whatSkinDiseases" required/>
+
+                <label for="chronicDideases">Maladies chroniques ou conditions particulières à signaler ?</label>
+                <input type="text" name="chronicDideases" id="chronicDideases" required/>
+
+                
+                <fieldset id="tatooComplication">
+                    <legend>As-tu déjà eu des complications lors d’un tatouage précédent ? *</legend>
+
+                    <div>
+                        <input type="radio" name="tatooComplication" id="tatooComplicationYes" value="oui" required/>
+                        <label for="skinDiseasesYes">Oui</label>
+                    </div>
+                        
+                    <div>
+                        <input type="radio" name="tatooComplication" id="tatooComplicationNo" value="non"/>
+                        <label for="tatooComplicationNo">Non</label>
+                    </div>
+                </fieldset>
+
+                <label for="whatTatooComplication">Si "oui" à la question précédente, préciser lequel</label>
+                <input type="text" name="whatTatooComplication" id="whatTatooComplication" required/>
+
+            </section>
+
+            <button type="submit" id="sendForm">Envoyer le formulaire</button>
 
         </form>
 
