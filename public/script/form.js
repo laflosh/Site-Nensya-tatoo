@@ -1,6 +1,7 @@
 export function formMain(){
 
     submitFormData()
+    checkRadioValueSelected()
 
 }
 
@@ -106,5 +107,66 @@ function checkBoutonRadionChecked(radios){
     }
 
     return selectedValue
+
+}
+
+//Listenning each radio bouton to know witch one are selected
+//to create an addionnal nput for more context information in the form
+function checkRadioValueSelected(){
+
+    //for treatments question
+
+    //for skin diseases question
+    let skinDiseases = document.getElementsByName("skinDiseases")
+
+    skinDiseases.forEach(radio => {
+        radio.addEventListener("change", (event) => toggleSkinDiseasesBock())
+    })
+
+    document.addEventListener("DOMContentLoaded", (event) => toggleSkinDiseasesBock())
+
+    //for chronic diseases question
+
+}
+
+function toggleSkinDiseasesBock(){
+
+    let skinDiseasesFielset = document.getElementById("skinDiseases")
+    let existingDiv = document.getElementById("skinDiseasesBlock")
+    let selected = document.querySelector('input[name="skinDiseases"]:checked')
+
+    if(selected && selected.value === "oui"){
+
+        if(!existingDiv){
+
+            let divBlock = document.createElement("div")
+            let inputText = document.createElement("input")
+            let label = document.createElement("label")
+
+            divBlock.setAttribute("id", "skinDiseasesBlock");
+
+            inputText.setAttribute("type", "text")
+            inputText.setAttribute("name", "whatSkinDiseases")
+            inputText.setAttribute("id", "whatSkinDiseases")
+            inputText.required = true
+
+            label.setAttribute("for", "whatSkinDiseases")
+            label.textContent = "Préciser lequel : "
+
+            divBlock.appendChild(label)
+            divBlock.appendChild(inputText)
+
+            skinDiseasesFielset.appendChild(divBlock)
+        }
+
+    } else if(selected && selected.value === "non"){
+
+        if(existingDiv){
+
+            existingDiv.remove()
+
+        }
+
+    }
 
 }
