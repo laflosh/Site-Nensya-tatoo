@@ -85,7 +85,7 @@ function getDataFromForm(){
         ...(whatSkinDiseases ? {"whatSkinDiseases" : whatSkinDiseases.value} : {}),
         "chronicDiseases" : chronicDiseases.value,
         "tatooComplication" : tatooComplications,
-        ...(whatTatooComplications ? {"whatTatooComplications" : whatSkinDiseases.value} : {}),
+        ...(whatTatooComplications ? {"whatTatooComplications" : whatTatooComplications.value} : {}),
     }
 
     return dataForm
@@ -115,21 +115,77 @@ function checkBoutonRadionChecked(radios){
 function checkRadioValueSelected(){
 
     //for treatments question
+    let treatments = document.getElementsByName("treatments")
+
+    treatments.forEach(radio => {
+        radio.addEventListener("change", (event) => toggleSkinTreatmentsBlock())
+    })
+
+    document.addEventListener("DOMContentLoaded", (event) => toggleSkinTreatmentsBlock())
 
     //for skin diseases question
     let skinDiseases = document.getElementsByName("skinDiseases")
 
     skinDiseases.forEach(radio => {
-        radio.addEventListener("change", (event) => toggleSkinDiseasesBock())
+        radio.addEventListener("change", (event) => toggleSkinDiseasesBlock())
     })
 
-    document.addEventListener("DOMContentLoaded", (event) => toggleSkinDiseasesBock())
+    document.addEventListener("DOMContentLoaded", (event) => toggleSkinDiseasesBlock())
 
     //for chronic diseases question
+    let tatooComplication = document.getElementsByName("tatooComplication")
+
+    tatooComplication.forEach(radio => {
+        radio.addEventListener("change", (event) => toggleTatooComplicationBlock())
+    })
+
+    document.addEventListener("DOMContentLoaded", (event) => toggleTatooComplicationBlock())
 
 }
 
-function toggleSkinDiseasesBock(){
+function toggleSkinTreatmentsBlock(){
+
+    let skinTreatmentsFielset = document.getElementById("treatments")
+    let existingDiv = document.getElementById("skinTreatmentsBlock")
+    let selected = document.querySelector('input[name="treatments"]:checked')
+
+    if(selected && selected.value === "oui"){
+
+        if(!existingDiv){
+
+            let divBlock = document.createElement("div")
+            let inputText = document.createElement("input")
+            let label = document.createElement("label")
+
+            divBlock.setAttribute("id", "skinTreatmentsBlock");
+
+            inputText.setAttribute("type", "text")
+            inputText.setAttribute("name", "whatTreatments")
+            inputText.setAttribute("id", "whatTreatments")
+            inputText.required = true
+
+            label.setAttribute("for", "whatTreatments")
+            label.textContent = "Préciser lequel : "
+
+            divBlock.appendChild(label)
+            divBlock.appendChild(inputText)
+
+            skinTreatmentsFielset.appendChild(divBlock)
+        }
+
+    } else if(selected && selected.value === "non"){
+
+        if(existingDiv){
+
+            existingDiv.remove()
+
+        }
+
+    }
+
+}
+
+function toggleSkinDiseasesBlock(){
 
     let skinDiseasesFielset = document.getElementById("skinDiseases")
     let existingDiv = document.getElementById("skinDiseasesBlock")
@@ -157,6 +213,48 @@ function toggleSkinDiseasesBock(){
             divBlock.appendChild(inputText)
 
             skinDiseasesFielset.appendChild(divBlock)
+        }
+
+    } else if(selected && selected.value === "non"){
+
+        if(existingDiv){
+
+            existingDiv.remove()
+
+        }
+
+    }
+
+}
+
+function toggleTatooComplicationBlock(){
+
+    let tatooComplicationFielset = document.getElementById("tatooComplication")
+    let existingDiv = document.getElementById("tatooComplicationBlock")
+    let selected = document.querySelector('input[name="tatooComplication"]:checked')
+
+    if(selected && selected.value === "oui"){
+
+        if(!existingDiv){
+
+            let divBlock = document.createElement("div")
+            let inputText = document.createElement("input")
+            let label = document.createElement("label")
+
+            divBlock.setAttribute("id", "tatooComplicationBlock");
+
+            inputText.setAttribute("type", "text")
+            inputText.setAttribute("name", "whatTatooComplication")
+            inputText.setAttribute("id", "whatTatooComplication")
+            inputText.required = true
+
+            label.setAttribute("for", "whatTatooComplication")
+            label.textContent = "Préciser lequel : "
+
+            divBlock.appendChild(label)
+            divBlock.appendChild(inputText)
+
+            tatooComplicationFielset.appendChild(divBlock)
         }
 
     } else if(selected && selected.value === "non"){
