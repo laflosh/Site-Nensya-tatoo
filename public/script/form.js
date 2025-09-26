@@ -1,6 +1,9 @@
+import { saveElementInLocalStorage,removeElementInLocalStorage } from "./utils.js"
+
 export function formMain(){
 
     submitFormData()
+    saveFormState()
     checkRadioValueSelected()
 
 }
@@ -17,6 +20,8 @@ function submitFormData(){
         let dataForm = getDataFromForm()
 
         console.log(dataForm)
+
+        removeElementInLocalStorage("dataForm")
 
     })
 
@@ -89,6 +94,29 @@ function getDataFromForm(){
     }
 
     return dataForm
+
+}
+
+//save element form the form in local for each changement in the form
+function saveFormState(){
+
+    document.querySelectorAll("input, select, textarea").forEach(element => {
+
+        element.addEventListener("input", saveFormDataInLocalStorage)
+        element.addEventListener("change", saveFormDataInLocalStorage)
+
+    })
+
+}
+
+//Function to save the actual data from form in localstorage
+function saveFormDataInLocalStorage(){
+
+    const dataForm = getDataFromForm()
+
+    console.log(dataForm)
+
+    saveElementInLocalStorage("dataForm", dataForm)
 
 }
 
