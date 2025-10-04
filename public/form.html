@@ -7,7 +7,7 @@
         <title>Formulaire de contact</title>
         <link rel="stylesheet" href="./style/main.css">
         <link rel="stylesheet" href="./style/form.css">
-        <script type="module" src="script/main.js"></script>
+        <script type="module" src="script/form/mainForm.js"></script>
 
     </head>
 
@@ -213,6 +213,15 @@
             <button type="submit" id="sendForm">Envoyer le formulaire</button>
 
         </form>
+
+        <!--div for loading modal during sending mail popup-->
+        <div id="loadingModal" aria-hidden="true" style="display: none">
+
+            <p>
+               Le formulaire est en cour d'envoie, veuillez patienter...
+            </p>
+
+        </div>
 
         <footer>
 

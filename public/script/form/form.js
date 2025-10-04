@@ -1,4 +1,5 @@
-import { saveElementInLocalStorage,removeElementInLocalStorage } from "./utils.js"
+import { saveElementInLocalStorage, removeElementInLocalStorage, redirection} from "../utils.js"
+import {openLoadingModal, closeLoadingModal} from "./loadingModalForm.js"
 
 export function formMain(){
 
@@ -22,6 +23,15 @@ function submitFormData(){
         console.log(dataForm)
 
         removeElementInLocalStorage("dataForm")
+
+        openLoadingModal()
+
+        setTimeout(() => {
+
+            closeLoadingModal()
+            redirection("/public/confirmation.html")
+
+        }, 3000)
 
     })
 
