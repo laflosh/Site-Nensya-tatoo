@@ -1,11 +1,16 @@
-import { saveElementInLocalStorage, removeElementInLocalStorage, redirection} from "../utils.js"
+import {debounce, saveElementInLocalStorage, removeElementInLocalStorage, getElementInLocalstorage, redirection} from "../utils.js"
 import {openLoadingModal, closeLoadingModal} from "./loadingModalForm.js"
 
 export function formMain(){
 
-    submitFormData()
-    saveFormState()
-    checkRadioValueSelected()
+    document.addEventListener("DOMContentLoaded", (event) => {
+
+        restoreSavedForm()
+        checkRadioValueSelected()
+        saveFormState()
+        submitFormData()
+
+    })
 
 }
 
@@ -112,8 +117,10 @@ function saveFormState(){
 
     document.querySelectorAll("input, select, textarea").forEach(element => {
 
-        element.addEventListener("input", saveFormDataInLocalStorage)
-        element.addEventListener("change", saveFormDataInLocalStorage)
+        const savedDebounce = debounce(saveFormDataInLocalStorage, 300)
+
+        element.addEventListener("input", savedDebounce)
+        element.addEventListener("change", savedDebounce)
 
     })
 
@@ -124,9 +131,18 @@ function saveFormDataInLocalStorage(){
 
     const dataForm = getDataFromForm()
 
-    console.log(dataForm)
-
     saveElementInLocalStorage("dataForm", dataForm)
+
+}
+
+//Restore the saved form from the lastest state in the localstorage
+function restoreSavedForm(){
+
+    const savedData = getElementInLocalstorage("dataForm")
+
+    console.log(savedData)
+
+
 
 }
 
@@ -149,7 +165,7 @@ function checkBoutonRadionChecked(radios){
 }
 
 //Listenning each radio bouton to know witch one are selected
-//to create an addionnal nput for more context information in the form
+//to create an addionnal input for more context information in the form
 function checkRadioValueSelected(){
 
     //for treatments question

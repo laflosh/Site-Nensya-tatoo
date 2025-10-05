@@ -5,10 +5,18 @@ export  function saveElementInLocalStorage(key, data){
 
 }
 
+export function getElementInLocalstorage(key){
+
+    localStorage.getItem(key)
+
+}
+
 //remove an element in the localstorage with key
 export function removeElementInLocalStorage(key){
 
-    localStorage.removeItem(key)
+    let data = localStorage.removeItem(key)
+
+    return JSON.parse(data)
 
 }
 
@@ -20,5 +28,19 @@ export function redirection(path){
     let url = target.href
 
     window.location.assign(url)
+
+}
+
+//function to create a delay between actions
+export function debounce(fn, time){
+
+    let timeout
+
+    return (...args) => {
+
+        clearTimeout(timeout)
+        timeout = setTimeout(() => fn(...args), time)
+
+    }
 
 }
