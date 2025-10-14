@@ -3,14 +3,10 @@ import {openLoadingModal, closeLoadingModal} from "./loadingModalForm.js"
 
 export function formMain(){
 
-    document.addEventListener("DOMContentLoaded", (event) => {
-
-        restoreSavedForm()
-        checkRadioValueSelected()
-        saveFormState()
-        submitFormData()
-
-    })
+    restoreSavedForm()
+    checkRadioValueSelected()
+    saveFormState()
+    submitFormData()
 
 }
 
@@ -115,9 +111,9 @@ function getDataFromForm(){
 //save element form the form in local for each changement in the form
 function saveFormState(){
 
-    document.querySelectorAll("input, select, textarea").forEach(element => {
+    const savedDebounce = debounce(saveFormDataInLocalStorage, 300)
 
-        const savedDebounce = debounce(saveFormDataInLocalStorage, 300)
+    document.querySelectorAll("input, select, textarea").forEach(element => {
 
         element.addEventListener("input", savedDebounce)
         element.addEventListener("change", savedDebounce)
@@ -140,9 +136,62 @@ function restoreSavedForm(){
 
     const savedData = getElementInLocalstorage("dataForm")
 
+    if(!savedData) return 
+
     console.log(savedData)
 
+    //Restore static data, with none dynamics elements associeted
+    Object.keys(savedData).forEach((key) => {
 
+        const value = savedData[key]
+        if(!value) return
+
+        const element = document.querySelector(`input[name="${key}"]`) || document.getElementById(key)
+        if(!element) return
+
+        if(element.type == "radio"){
+            let btnRadio = document.querySelector(`input[name="${key}"][value="${value}"]`);
+            btnRadio.checked = true
+        } else if(element.tagName == "SELECT") {
+            element.value = value
+        } else {
+            element.value = value
+        }
+
+    })
+
+    const dynamicsRadios = ["treatments", "skinDiseases", "tatooComplication"];
+
+    //Restore dynamics data, specialy for radio bouton, they to show an addionnal input in case of "oui"
+    //value to add a dynamic input with data associeted
+    dynamicsRadios.forEach( (name) => {
+        if(savedData[name]) {
+            const radioBtn = document.querySelector(`input[name="${name}"][value="${savedData[name]}"]`)
+
+            if(radioBtn){
+                radioBtn.checked = true;
+            }
+        }
+    })
+
+    toggleSkinTreatmentsBlock();
+    toggleSkinDiseasesBlock();
+    toggleTatooComplicationBlock();
+
+    if(savedData.whatTreatment){
+        const input = document.getElementById("whatTreatments")
+        if(input) input.value = savedData.whatTreatment
+    }
+
+    if(savedData.whatSkinDiseases){
+        const input = document.getElementById("whatSkinDiseases")
+        if(input) input.value = savedData.whatSkinDiseases
+    }
+
+    if(savedData.whatTatooComplications){
+        const input = document.getElementById("whatTatooComplication")
+        if(input) input.value = savedData.whatTatooComplications
+    }
 
 }
 

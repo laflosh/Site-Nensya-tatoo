@@ -7,16 +7,15 @@ export  function saveElementInLocalStorage(key, data){
 
 export function getElementInLocalstorage(key){
 
-    localStorage.getItem(key)
+    let data = localStorage.getItem(key)
+    return JSON.parse(data)
 
 }
 
 //remove an element in the localstorage with key
 export function removeElementInLocalStorage(key){
 
-    let data = localStorage.removeItem(key)
-
-    return JSON.parse(data)
+    localStorage.removeItem(key)
 
 }
 
@@ -32,7 +31,7 @@ export function redirection(path){
 }
 
 //function to create a delay between actions
-export function debounce(fn, time){
+export function debounce(fn, time = 200){
 
     let timeout
 
