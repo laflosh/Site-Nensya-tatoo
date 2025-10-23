@@ -1,5 +1,6 @@
 import {debounce, saveElementInLocalStorage, removeElementInLocalStorage, getElementInLocalstorage, redirection} from "../utils.js"
 import {openLoadingModal, closeLoadingModal} from "./loadingModalForm.js"
+import {checkDataValidation} from "../validate.js"
 
 export function formMain(){
 
@@ -22,6 +23,11 @@ function submitFormData(){
         let dataForm = getDataFromForm()
 
         console.log(dataForm)
+
+        if(!checkDataValidation(dataForm)){
+            console.warn("Invalid data in form")
+            return
+        }
 
         removeElementInLocalStorage("dataForm")
 
