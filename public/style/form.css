@@ -22,4 +22,10 @@ body{
     align-items: center;
 }
 
+.error-message{
+    color: red;
+    font-size: 16px;
+    font-weight: 600;
+}
+
 /*layout for the waiting modal during sending form contact to tatoo artist*/
