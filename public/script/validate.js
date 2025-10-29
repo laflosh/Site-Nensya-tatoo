@@ -12,7 +12,7 @@ export function checkDataValidation(data){
     if(!validateFirstName(data.firstName)) valid = false
     if(!validateBirthdate(data.birthDate)) valid = false
     if(!validatePhoneNumber(data.phoneNumber)) valid = false
-    if(!validateMail(data.mail)) valid = false
+    if(!validateMail(data.email)) valid = false
     if(!validateProjectDescription(data.projectDescription)) valid = false
     if(!validateBodyLocation(data.bodyLocation)) valid = false
     if(!validateHeightTatoo(data.heightTatoo)) valid = false
@@ -99,7 +99,7 @@ function validateMail(mail){
     const input = document.getElementById("email")
     const regex = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/
 
-    if(!mail || regex.test(mail.trim())) {
+    if(!mail || !regex.test(mail.trim())) {
 
         showErrorMessage(input, "L'adresse email n'est pas au bon format.")
         return false
@@ -210,9 +210,11 @@ function validateRadioGroupWithExtraInput(name, radioValue, inputValue){
             return false
 
         }
-        console.log(inputValue)
+
         clearErrorMessage(fieldset)
-        clearErrorMessage(extraInput)
+        if(extraInput) {
+            clearErrorMessage(extraInput)
+        }
         return true
 
     }  
