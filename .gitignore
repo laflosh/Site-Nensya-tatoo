@@ -1,1 +1,49 @@
+# ======================================
+# Environnement & secrets
+# ======================================
 .env
+.env.local
+.env.*.local
+
+# ======================================
+# Dépendances & builds
+# ======================================
+node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Dossier build / dist éventuel
+dist/
+build/
+.cache/
+
+# ======================================
+# Vercel / outils de déploiement
+# ======================================
+.vercel/
+
+# ======================================
+# Logs et diagnostics
+# ======================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ======================================
+# Système et IDE
+# ======================================
+.DS_Store               # macOS
+Thumbs.db               # Windows
+*.swp                   # Vim
+*.swo
+.idea/                  # JetBrains (WebStorm)
+.vscode/                # VSCode settings personnels
+*.iml
+
+# ======================================
+# Tests (si ajoutés plus tard)
+# ======================================
+coverage/
+jest-html-reporters-*.html
