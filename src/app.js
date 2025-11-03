@@ -1,4 +1,5 @@
 const express = require("express")
+const formRoute = require("./routes/formRoutes")
 
 const app = express()
 
@@ -11,5 +12,7 @@ app.use((req, res, next) => {
 })
 
 app.use(express.json())
+
+app.use("/api", formRoute)
 
 module.exports = app
