@@ -30,17 +30,34 @@ function submitFormData(){
         }
 
         removeElementInLocalStorage("dataForm")
-
         openLoadingModal()
-
-        setTimeout(() => {
-
-            closeLoadingModal()
-            redirection("/public/confirmation.html")
-
-        }, 3000)
+        sendData(JSON.stringify(dataForm))
 
     })
+
+}
+
+async function sendData(dataForm){
+
+    const response = await fetch("http://127.0.0.1:3000/api/sendForm", {
+        method : "POST",
+        headers : {"Content-Type" : "application/json"},
+        body : dataForm
+    })
+
+    const result = await response.json()
+
+    if(response.ok){
+
+        console.log(result.message)
+        closeLoadingModal()
+        redirection("/public/confirmation.html")
+
+    } else {
+
+        console.log(result.message)
+
+    }
 
 }
 
