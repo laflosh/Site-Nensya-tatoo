@@ -50,8 +50,8 @@ async function sendData(dataForm){
     if(response.ok){
 
         console.log(result.message)
-        closeLoadingModal()
-        redirection("/public/confirmation.html")
+        //closeLoadingModal()
+        //redirection("/public/confirmation.html")
 
     } else {
 
