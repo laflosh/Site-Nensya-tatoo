@@ -64,8 +64,8 @@ class DataForm {
         this.firstName = value
     }
 
-    get birthdate(){
-        return this.birthdate
+    get birthDate(){
+        return this.birthDate
     }
 
     set birthDate(value){

@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "vercel" : "vercel dev"
+    "vercel": "vercel dev"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/laflosh/Site-Nensya-tatoo#readme",
   "dependencies": {
+    "@sendgrid/mail": "^8.1.6",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
-    "nodemailer": "^7.0.10",
     "serverless-http": "^4.0.0"
   },
   "devDependencies": {

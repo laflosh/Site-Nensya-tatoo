@@ -18,7 +18,10 @@ exports.handleForm = async (req, res, next) => {
     } catch(e){
 
         console.error(e)
-        res.status(500).json({message : "Error during sending the form data."})
+        res.status(500).json({
+            message : "Error during sending the form data.",
+            error : e.message
+        })
 
     }
 
